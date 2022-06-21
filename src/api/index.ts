@@ -5,6 +5,6 @@ const api = axios.create({
 });
 
 
-export async function getAccounts(userId: number){
+export async function fetchAccounts(userId: number){
     return api.get(`accounts?userId=${userId}`);
 }
