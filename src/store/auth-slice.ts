@@ -4,6 +4,14 @@ const authSlice = createSlice({
     name: 'auth',
     initialState:{isLoggedIn:true},
     reducers: {
+        toggleView(state){
+            if(state.isLoggedIn){
+                state.isLoggedIn = false
+            }
+            else if(!state.isLoggedIn){
+                state.isLoggedIn = true;
+            }
+        },
         login(state){
             state.isLoggedIn = true;
         },
@@ -16,3 +24,8 @@ const authSlice = createSlice({
 export const authActions = authSlice.actions;
 
 export default authSlice;
+
+
+// is home page
+// is accounts view (userId as payload)
+// is single acounts view (account number as payload)

@@ -29,7 +29,7 @@ function App() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
     const toggleLoggedInState = (e: any) => {
         e.preventDefault();
-        dispatch(authActions.logout());
+        dispatch(authActions.toggleView());
     }
 
     return (
