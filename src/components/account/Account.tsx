@@ -10,12 +10,11 @@ function Account(props: any) {
 
     return (
         <div className={"account"}>
-            <div className={"account-number"}>{accountNumber}</div>
-            <div className={"account-name"}>{accountName}</div>
-            <div className={"account-balance"}>{accountBalance}</div>
-            <div className={"account-user-id"}>{accountUserId}</div>
-            <div className={"account-currency"}>{accountCurrency}</div>
-            <div>TEST</div>
+            <span className={"account-number"}>{accountNumber}</span>
+            <span className={"account-name"}>{accountName}</span>
+            <span className={"account-balance"}>{accountBalance}</span>
+            <span className={"account-user-id"}>{accountUserId}</span>
+            <span className={"account-currency"}>{accountCurrency}</span>
         </div>
     );
 }

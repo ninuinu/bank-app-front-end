@@ -34,14 +34,12 @@ function AccountList(props: any) {
     }, [accounts])
 
     return (
-        <div>
-            {
+
                 accounts.map((account: Account) => <Account key={account.accountNumber}
                                                  accountNumber={account.accountNumber}
                                                  accountName={account.accountName} balance={account.balance}
                                                  accountUserId={account.userId} currency={account.currency}/>
-                )}
-        </div>
+                )
     )
 
 }
