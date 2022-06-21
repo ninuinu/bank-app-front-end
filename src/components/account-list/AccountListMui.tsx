@@ -5,10 +5,12 @@ import Stack from '@mui/material/Stack';
 import {styled} from '@mui/material/styles';
 //import {useNavigate} from "react-router-dom";
 import {Account} from "../index";
-import {ButtonBase} from "@mui/material";
+import {Button, ButtonBase} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../store";
 import {useEffect} from "react";
 import {getAccounts} from "../../store/accounts-slice";
+import {useNavigate} from "react-router-dom";
+import styles from "./button.module.css";
 
 interface Account {
     accountNumber: number;
@@ -30,16 +32,14 @@ const Item = styled(Paper)(({theme}) => ({
 
 // detta blir nya accountList
 export default function AccountListMui() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
 
     const accounts = useAppSelector(state => state.accounts.accounts);
     // const userId = useAppSelector(state => state.accounts.userId);
 
-    // körs första gången man renderar en komponent
 
-    // "om action list skapas, gör .... "
     useEffect(() => {
         dispatch(getAccounts(2451));
     }, [dispatch])
@@ -55,12 +55,12 @@ export default function AccountListMui() {
     return (
         <Box sx={{width: '100%'}}>
             <Stack spacing={2}>
-                {accounts.map((account: Account) => <Item><Account key={account.accountNumber}
+                {accounts.map((account: Account) => <ButtonBase className={styles["button"]} onClick={()=>{navigate(`/transactions/${account.accountNumber}`)}}><Item><Account key={account.accountNumber}
                                                                     number={account.accountNumber}
                                                                     name={account.accountName}
                                                                     balance={account.balance}
                                                                     userId={account.userId}
-                                                                    currency={account.currency}/> </Item>)}
+                                                                           currency={account.currency}/> </Item></ButtonBase>)}
 
             </Stack>
         </Box>

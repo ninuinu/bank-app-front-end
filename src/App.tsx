@@ -3,8 +3,9 @@ import {NavBar, AccountList, ResponsiveAppBar, AccountListMui, TransactionListMu
 import {Button, CssBaseline, Container} from "@mui/material";
 import {authActions} from "./store/auth-slice";
 import {accountsActions, getAccounts} from "./store/accounts-slice";
-//import styles from './App.module.css';
+import styles from './App.module.css';
 import {useAppDispatch, useAppSelector} from "./store";
+import {Route, Routes} from "react-router-dom";
 
 /**
  const test = async () =>  {
@@ -47,19 +48,22 @@ function App() {
         <div>
             <CssBaseline/>
             <ResponsiveAppBar/>
-            <div className="tt">
-            <Container maxWidth="sm">
-                {/** isLoggedIn && <AccountList /> */}
+            <Container className={styles["wrapper"]} maxWidth="sm">
 
-                <AccountListMui/>
+                <Routes>
+                    <Route path={"/"}
+                           element={<AccountListMui/>}/>
+
+
+                    <Route path={"/transactions/:accountNumber"}
+                           element={
+                    <TransactionListMui/>}/>
+                </Routes>
+
                 <Button onClick={toggleLoggedInState}>TOGGLE</Button>
                 <Button onClick={() => dispatch(getAccounts(2451))}>Get accounts</Button>
-                {accounts && accounts.map( (account: any) => <div key={account.accountNumber}> {account.accountName} </div>)}
-
-                <TransactionListMui/>
 
             </Container>
-            </div>
 
         </div>
     );

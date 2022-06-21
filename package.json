@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "typescript-plugin-css-modules": "^3.4.0"
+    "typescript-plugin-css-modules": "^3.4.0",
+    "webpack": "^5.73.0"
   }
 }
