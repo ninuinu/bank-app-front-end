@@ -5,6 +5,8 @@ export const getTransactions = createAsyncThunk(
     "getTransactions",
     async(accountNumber:number)=>{
         const response = await fetchTransactions(accountNumber);
+        console.log("I TRANSACTIONS SLICE");
+        console.log(response.data);
         return response.data;
     }
 )

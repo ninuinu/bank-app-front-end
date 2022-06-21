@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, AccountList, ResponsiveAppBar, AccountListMui} from './components/index';
+import {NavBar, AccountList, ResponsiveAppBar, AccountListMui, TransactionList} from './components/index';
 import {Button, CssBaseline, Container} from "@mui/material";
 import {authActions} from "./store/auth-slice";
 import {accountsActions, getAccounts} from "./store/accounts-slice";
@@ -31,6 +31,10 @@ function App() {
     const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
     const isLoading = useAppSelector(state => state.accounts.isLoading);
     const accounts = useAppSelector(state => state.accounts.accounts);
+    const transactions = useAppSelector(state => state.transactions.transactions);
+
+    console.log("trans");
+    console.log(transactions);
 
     // connected to button
     const toggleLoggedInState = (e: any) => {
@@ -52,6 +56,7 @@ function App() {
                 <Button onClick={() => dispatch(getAccounts(2451))}>Get accounts</Button>
                 {accounts && accounts.map( (account: any) => <div key={account.accountNumber}> {account.accountName} </div>)}
             </Container>
+                <TransactionList/>
             </div>
 
         </div>
