@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, AccountList, ResponsiveAppBar, AccountListMui, TransactionList} from './components/index';
+import {NavBar, AccountList, ResponsiveAppBar, AccountListMui, TransactionListMui} from './components/index';
 import {Button, CssBaseline, Container} from "@mui/material";
 import {authActions} from "./store/auth-slice";
 import {accountsActions, getAccounts} from "./store/accounts-slice";
@@ -55,8 +55,10 @@ function App() {
                 <Button onClick={toggleLoggedInState}>TOGGLE</Button>
                 <Button onClick={() => dispatch(getAccounts(2451))}>Get accounts</Button>
                 {accounts && accounts.map( (account: any) => <div key={account.accountNumber}> {account.accountName} </div>)}
+
+                <TransactionListMui/>
+
             </Container>
-                <TransactionList/>
             </div>
 
         </div>

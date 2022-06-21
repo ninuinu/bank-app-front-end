@@ -2,11 +2,14 @@ import React from 'react';
 
 
 function Account(props: any) {
-    const accountNumber = props.accountNumber;
-    const accountName = props.accountName;
-    const accountBalance = props.accountBalance;
-    const accountUserId = props.accountUserId;
-    const accountCurrency = props.accountCurrency;
+    const accountNumber = props.number;
+    const accountName = props.name;
+    const accountBalance = props.balance;
+    const accountUserId = props.userId;
+    const accountCurrency = props.currency;
+
+    console.log("i Account");
+    console.log(accountNumber);
 
     return (
         <div className={"account"}>

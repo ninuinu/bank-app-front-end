@@ -1,19 +1,20 @@
 import React from 'react';
 
 function Transaction(props:any) {
-    const transactionDate = props.transactionDate;
-    const transactionAccount = props.transactionAccount;
-    const transactionAmount = props.transactionAmount;
-    const transactionCounterparty = props.transactionCounterparty;
+    const transactionDate = props.date;
+    const transactionAccount = props.account;
+    const transactionAmount = props.amount;
+    const transactionCounterparty = props.counterparty;
     const transactionId = props.transactionId;
+
+
     return (
         <div>
-            <div className={"transaction-date"}>{transactionDate}</div>
-            <div className={"transaction-account"}>{transactionAccount}</div>
-            <div className={"transaction-amount"}>{transactionAmount}</div>
-            <div className={"transaction-counterparty"}>{transactionCounterparty}</div>
-            <div className={"transaction-id"}>{transactionId}</div>
-            <div>TEST</div>
+            <span className={"transaction-date"}>{transactionDate}</span>
+            <span className={"transaction-account"}>{transactionAccount}</span>
+            <span className={"transaction-amount"}>{transactionAmount}</span>
+            <span className={"transaction-counterparty"}>{transactionCounterparty}</span>
+            <span className={"transaction-id"}>{transactionId}</span>
         </div>
     );
 }

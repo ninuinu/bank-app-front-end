@@ -17,7 +17,7 @@ function AccountList(props: any) {
     const dispatch = useAppDispatch();
 
     const accounts = useAppSelector(state => state.accounts.accounts);
-   // const userId = useAppSelector(state => state.accounts.userId);
+    // const userId = useAppSelector(state => state.accounts.userId);
 
     // körs första gången man renderar en komponent
 
@@ -25,21 +25,24 @@ function AccountList(props: any) {
     useEffect(() => {
         dispatch(getAccounts(2451));
     }, [dispatch])
-    
-    
-    
+
+
     // varje gång accounts ändras, så gör det som är innanför
     useEffect(() => {
         console.log("accounts uppdaterades!")
     }, [accounts])
 
+    console.log("i Accountlist");
+    console.log(accounts);
     return (
 
-                accounts.map((account: Account) => <Account key={account.accountNumber}
-                                                 accountNumber={account.accountNumber}
-                                                 accountName={account.accountName} balance={account.balance}
-                                                 accountUserId={account.userId} currency={account.currency}/>
-                )
+        accounts.map((account: Account) => <Account key={account.accountNumber}
+                                                    number={account.accountNumber}
+                                                    name={account.accountName}
+                                                    balance={account.balance}
+                                                    userId={account.userId}
+                                                    currency={account.currency}/>
+        )
     )
 
 }
