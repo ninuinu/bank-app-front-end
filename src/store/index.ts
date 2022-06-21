@@ -1,26 +1,22 @@
-import {legacy_createStore as createStore} from 'redux';
-import {MyActions} from "./action.interface";
-import {MyState} from "./state.interface";
+import {configureStore, createSlice} from "@reduxjs/toolkit";
 
-
-const reducerFn = (state={counter:10}, action:any) => {
-    // needs to be a synchronous function
-    // we should not mutate the original state
-    // always a copy of the original state, otherwise everything will crash
-
-    if(action.type==='INC'){
-        return {counter: state.counter+1};
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: {counter:0},
+    reducers: {
+        increment(state){
+            state.counter ++;
+        },
+        decrement(state) {
+            state.counter --;
+        },
+        addBy(state,action) {
+            state.counter += action.payload;
+        }
     }
-    if(action.type==='DEC'){
-        return {counter: state.counter-1};
-    }
-    if(action.type==='ADD'){
-        return {counter: state.counter+action.payload};
-    }
-
-    return state;
-}
-
-const store = createStore(reducerFn);
-
+})
+export const actions = counterSlice.actions;
+const store = configureStore({
+    reducer: counterSlice.reducer
+})
 export default store;

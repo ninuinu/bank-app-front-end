@@ -7,6 +7,7 @@ import {getAccounts} from "./api";
 import {useSelector, useDispatch} from 'react-redux';
 import {MyState} from "./store/state.interface";
 import {Dispatch} from "redux";
+import {actions} from './store/index';
 
 /**
 const test = async () =>  {
@@ -23,13 +24,13 @@ function App() {
     const counter = useSelector((state)=>state.counter);
     const dispatch:Dispatch = useDispatch();
     const increment = () => {
-        dispatch({type: 'INC'});
+        dispatch(actions.increment());
     }
     const decrement = () => {
-        dispatch({type: 'DEC'});
+        dispatch(actions.decrement());
     }
     const addBy = () => {
-        dispatch({type: 'ADD', payload: 10});
+        dispatch(actions.addBy(10));
     }
 /**
     useEffect(() => {
@@ -44,7 +45,7 @@ function App() {
         <h1>Counter App</h1>
         <h2>{counter}</h2>
         <button onClick={increment}>Increment</button>
-        <button onClick={decrement}>Increment</button>
+        <button onClick={decrement}>Decrement</button>
         <button onClick={addBy}>Add by 10</button>
         <AccountList/>
     </div>
