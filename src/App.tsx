@@ -1,8 +1,9 @@
 import React from 'react';
 import {NavBar, AccountList, ResponsiveAppBar} from './components/index';
 import {useDispatch, useSelector} from "react-redux";
-import {Button, CssBaseline} from "@mui/material";
+import {Button, CssBaseline, Container} from "@mui/material";
 import {authActions} from "./store/auth-slice";
+import styles from './App.module.css';
 
 /**
  const test = async () =>  {
@@ -36,8 +37,13 @@ function App() {
         <div>
             <CssBaseline/>
             <ResponsiveAppBar/>
-            {isLoggedIn && <AccountList/>}
-            <Button onClick={toggleLoggedInState}>TOGGLE</Button>
+            <div className={styles["wrapper"]}>
+            <Container maxWidth="sm">
+                {isLoggedIn && <AccountList />}
+                <Button onClick={toggleLoggedInState}>TOGGLE</Button>
+            </Container>
+            </div>
+
         </div>
     );
 }
