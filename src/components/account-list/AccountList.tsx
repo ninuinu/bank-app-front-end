@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Account} from "../index";
 import {fetchAccounts} from "../../api";
-import {useAppSelector} from "../../store";
+import {useAppDispatch, useAppSelector} from "../../store";
+import {getAccounts} from "../../store/accounts-slice";
 
 interface Account {
     accountNumber: number;
@@ -13,17 +14,24 @@ interface Account {
 
 function AccountList(props: any) {
 
+    const dispatch = useAppDispatch();
+
     const accounts = useAppSelector(state => state.accounts.accounts);
+   // const userId = useAppSelector(state => state.accounts.userId);
 
-    const getAccountsApi = async () => {
-        //const accounts = await getAccounts(5462);
-        return fetchAccounts(2451);
-    };
+    // körs första gången man renderar en komponent
 
-    getAccountsApi().then(r => {
-        //      r.data.map((account:any) => console.log(account.accountNumber))
-        //     console.log("HELLO");
-    });
+    // "om action list skapas, gör .... "
+    useEffect(() => {
+        dispatch(getAccounts(2451));
+    }, [dispatch])
+    
+    
+    
+    // varje gång accounts ändras, så gör det som är innanför
+    useEffect(() => {
+        console.log("accounts uppdaterades!")
+    }, [accounts])
 
     return (
         <div>

@@ -10,6 +10,7 @@ export const getAccounts = createAsyncThunk(
 )
 
 // @ts-ignore
+// state.accounts (iom name:'accounts') och sen accounts array
 const accountsSlice = createSlice({
     name: 'accounts',
     initialState:{
@@ -24,14 +25,14 @@ const accountsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAccounts.fulfilled, (state, action) => {
             state.accounts = action.payload;
-        })
+            state.isLoading = false;
+        });
+        builder.addCase(getAccounts.pending, (state, action) => {
+            state.isLoading = true
+        });
     }
 });
 
 export const accountsActions = accountsSlice.actions;
 export default accountsSlice;
 
-
-// is home page
-// is accounts view (userId as payload)
-// is single acounts view (account number as payload)
