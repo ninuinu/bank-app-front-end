@@ -7,4 +7,8 @@ const api = axios.create({
 
 export async function fetchAccounts(userId: number){
     return api.get(`accounts?userId=${userId}`);
-}
+};
+
+export async function fetchTransactions(accountId:number){
+    return api.get(`transactions?accountId=${accountId}`);
+};
