@@ -60,10 +60,10 @@ function App() {
 
                     <Route path={"/transactions/:accountNumber"}
                            element={
-                        <div>
+                        <>
                         <AccountCard/>
                         <TransactionList/>
-                        </div>}/>
+                        </>}/>
                 </Routes>
 
                 <Button onClick={toggleLoggedInState}>TOGGLE</Button>

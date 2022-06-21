@@ -10,7 +10,7 @@ import {useAppDispatch, useAppSelector} from "../../store";
 import {useEffect} from "react";
 import {getAccounts} from "../../store/accounts-slice";
 import {useNavigate} from "react-router-dom";
-import styles from "./button.module.css";
+import styles from "./AccountList.module.css";
 
 interface Account {
     accountNumber: number;

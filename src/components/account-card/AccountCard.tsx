@@ -9,6 +9,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store";
 import {useEffect} from "react";
 import {getAccount} from "../../store/accounts-slice";
+import { CircularProgress } from '@mui/material';
+import styles from './AccountCard.module.css';
 
 const bull = (
     <Box
@@ -27,15 +29,21 @@ export default function AccountCard() {
 
     const account = useAppSelector(state => state.accounts.latestAccountCard)[0];
 
+
     useEffect(() => {
         dispatch(getAccount(Number(accountNumber)));
     }, [dispatch])
 
-    console.log("accountnumber i accountcard");
-    console.log(account.accountName);
+
+    console.log("HÄR");
+    console.log(account);
 
     return (
-        <Card sx={{ minWidth: 275 }}>
+        <>
+
+            {account ?
+
+        <Card className={styles["card"]} sx={{ minWidth: 275 }}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {account.accountNumber}
@@ -56,5 +64,11 @@ export default function AccountCard() {
                 <Button size="small">Edit Name</Button>
             </CardActions>
         </Card>
+                : <CircularProgress/>
+            }
+
+        </>
+
+
     );
 }

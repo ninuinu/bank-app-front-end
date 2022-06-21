@@ -1,0 +1,12 @@
+.transaction-card{
+    padding-bottom: 18px;
+}
+
+.transactions-container{
+    padding-top: 20px;
+    padding-bottom: 2px;
+}
+
+.no-transactions{
+    padding-bottom: 18px;
+}

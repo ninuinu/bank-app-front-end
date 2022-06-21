@@ -5,13 +5,14 @@ import Stack from '@mui/material/Stack';
 import {styled} from '@mui/material/styles';
 //import {useNavigate} from "react-router-dom";
 import {Account} from "../index";
-import {ButtonBase} from "@mui/material";
+import {ButtonBase, Typography} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../store";
 import {useEffect} from "react";
 import {getAccounts} from "../../store/accounts-slice";
 import {getTransactions} from "../../store/transactions-slice";
 import {Transaction} from "../index";
 import {useParams} from 'react-router-dom';
+import styles from './TransactionList.module.css';
 
 interface Transaction {
     date: string,
@@ -21,13 +22,7 @@ interface Transaction {
     id: number,
 }
 
-const Item = styled(Paper)(({theme}) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
+
 
 
 // detta blir nya accountList
@@ -42,27 +37,32 @@ export default function TransactionList() {
         dispatch(getTransactions(parseInt(accountNumber as string)));
     }, [dispatch])
 
-    console.log("i TransactionsListMui");
-    console.log(transactions);
+
 
     // fetch accounts state
     //  const accounts2 = useAppSelector(state => state.accounts.accounts);
     //console.log(accounts2.filter(account => account.accountNumber === 7777));
 
+    console.log(" TRANSACTION LIST ");
+    console.log(transactions);
     return (
-        <Box sx={{width: '100%'}}>
+
+        <Paper className={styles["transactions-container"]} sx={{width: '100%'}}>
             <Stack spacing={2}>
 
-                {transactions.map((transaction: Transaction) => <Item><Transaction key={transaction.id}
+                { transactions.length > 0 ? transactions.map((transaction: Transaction) => <Paper className={styles["transaction-card"]} elevation={0}><Transaction key={transaction.id}
                                                                                    date={transaction.date}
                                                                                    account={transaction.account}
                                                                                    amount={transaction.amount}
-                                                                                   counterpary={transaction.counterparty}
+                                                                                   counterparty={transaction.counterparty}
                                                                                    id={transaction.id}/>
-                </Item>)}
+                </Paper>) : <Typography className={styles["no-transactions"]} align="center">No Transactions</Typography>
+                }
 
             </Stack>
-        </Box>
+        </Paper>
+
+
     );
 }
 
