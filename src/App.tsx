@@ -1,7 +1,7 @@
 import React from 'react';
-import {NavBar, AccountList} from './components/index';
+import {NavBar, AccountList, ResponsiveAppBar} from './components/index';
 import {useDispatch, useSelector} from "react-redux";
-import {Button} from "@mui/material";
+import {Button, CssBaseline} from "@mui/material";
 import {authActions} from "./store/auth-slice";
 
 /**
@@ -34,7 +34,8 @@ function App() {
 
     return (
         <div>
-            <NavBar/>
+            <CssBaseline/>
+            <ResponsiveAppBar/>
             {isLoggedIn && <AccountList/>}
             <Button onClick={toggleLoggedInState}>TOGGLE</Button>
         </div>
