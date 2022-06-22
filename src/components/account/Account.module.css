@@ -1,0 +1,33 @@
+.account {
+    display: flex;
+    flex-direction: row;
+    margin-block: 18px;
+    width: 100%;
+ /*   justify-content: space-around;
+    align-content: space-between;*/
+}
+
+.number {
+    width: 20%;
+}
+
+.name {
+    width: 20%;
+  /*  text-align: left; */
+}
+
+.balance {
+    width: 20%;
+  /*  text-align: right; */
+
+}
+
+.user-id {
+    width: 20%;
+
+}
+
+.currency {
+    width: 20%;
+
+}

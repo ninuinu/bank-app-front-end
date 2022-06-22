@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {Typography} from "@mui/material";
+import styles from "./Account.module.css";
 
 function Account(props: any) {
     const accountNumber = props.number;
@@ -12,12 +13,13 @@ function Account(props: any) {
     console.log(accountNumber);
 
     return (
-        <div className={"account"}>
-            <span className={"account-number"}>{accountNumber}</span>
-            <span className={"account-name"}>{accountName}</span>
-            <span className={"account-balance"}>{accountBalance}</span>
-            <span className={"account-user-id"}>{accountUserId}</span>
-            <span className={"account-currency"}>{accountCurrency}</span>
+        <div className={styles["account"]}>
+            <Typography className={styles["number"]}>{accountNumber}</Typography>
+            <Typography className={styles["name"]}>{accountName}</Typography>
+            <Typography className={styles["user-id"]}>{accountUserId}</Typography>
+            <Typography className={styles["balance"]}>{accountBalance}</Typography>
+
+            <Typography className={styles["currency"]}>{accountCurrency}</Typography>
         </div>
     );
 }

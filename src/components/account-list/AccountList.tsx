@@ -55,7 +55,7 @@ export default function AccountList() {
     return (
         <Box sx={{width: '100%'}}>
             <Stack spacing={2}>
-                {accounts.map((account: Account) => <ButtonBase className={styles["button"]} onClick={()=>{navigate(`/transactions/${account.accountNumber}`)}}><Item><Account key={account.accountNumber}
+                {accounts.map((account: Account) => <ButtonBase className={styles["MuiButtonBase-root"]} onClick={()=>{navigate(`/transactions/${account.accountNumber}`)}}><Item className={styles["account-paper-row"]}><Account key={account.accountNumber}
                                                                     number={account.accountNumber}
                                                                     name={account.accountName}
                                                                     balance={account.balance}
