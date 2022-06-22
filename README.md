@@ -47,9 +47,7 @@ The front-end is written in Typescript and React, and makes use of the following
 
 The app makes use of the following APIs:
 * GET accounts
-* GET account
 * GET transactions
-* GET transaction
 * POST account(name) 
 
 Which enables users to:
@@ -60,8 +58,9 @@ Which enables users to:
 * View a detailed overview of a single transaction
 * Update the name of an acccount
 
-## State Management 
-
-
-
 ## Future Improvements
+
+* Validation of requests in back-end, e.g. by using Joi
+* Implement a real database
+* Implement authentication
+
