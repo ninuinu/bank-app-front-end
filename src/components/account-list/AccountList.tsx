@@ -53,7 +53,7 @@ export default function AccountList() {
     //console.log(accounts2.filter(account => account.accountNumber === 7777));
 
     return (
-        <Box sx={{width: '100%', boxShadow:1, borderRadius:'5px'}}>
+        <Box sx={{width: '100%', boxShadow: 1, borderRadius: '5px'}}>
             <Stack spacing={2}>
                 {accounts.map((account: Account) => <ButtonBase key={account.accountNumber}
                                                                 className={styles["MuiButtonBase-root"]}
@@ -61,11 +61,11 @@ export default function AccountList() {
                                                                     navigate(`/transactions/${account.accountNumber}`)
                                                                 }}><Item
                     className={styles["account-paper-row"]}><Account
-                                                                     number={account.accountNumber}
-                                                                     name={account.accountName}
-                                                                     balance={account.balance}
-                                                                     userId={account.userId}
-                                                                     currency={account.currency}/>
+                    number={account.accountNumber}
+                    name={account.accountName}
+                    balance={account.balance}
+                    userId={account.userId}
+                    currency={account.currency}/>
                 </Item></ButtonBase>)}
 
             </Stack>

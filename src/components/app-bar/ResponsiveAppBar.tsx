@@ -12,13 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const pages = [{
-        text: "Home",
-        link: "/",
-    },
+    text: "Home",
+    link: "/",
+},
     {
         text: "Accounts",
         link: "/accounts",
@@ -132,7 +132,7 @@ const ResponsiveAppBar = () => {
                         {pages.map((page) => (
                             <Button
                                 key={page.text}
-                                onClick={()=> navigate(page.link)}
+                                onClick={() => navigate(page.link)}
                                 sx={{my: 2, color: 'white', display: 'block'}}
                             >
                                 {page.text}

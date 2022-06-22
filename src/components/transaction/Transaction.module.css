@@ -1,5 +1,5 @@
-.transaction-row{
-    display:flex;
+.transaction-row {
+    display: flex;
     justify-content: space-around;
     align-content: space-between;
 }

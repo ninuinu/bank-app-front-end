@@ -65,9 +65,9 @@ function App() {
                                </>}/>
                     <Route path={"/transaction/:id"}
                            element={
-                            <>
-                               <TransactionCard/>
-                            </>
+                               <>
+                                   <TransactionCard/>
+                               </>
                            }/>
                 </Routes>
 

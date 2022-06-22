@@ -39,7 +39,7 @@ export default function TransactionCard() {
     }, [dispatch])
 
     useEffect(() => {
-        if(transaction) dispatch(getAccount(Number(transaction.account)));
+        if (transaction) dispatch(getAccount(Number(transaction.account)));
 
     }, [transaction])
 

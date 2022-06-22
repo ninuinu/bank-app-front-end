@@ -10,7 +10,6 @@ function Account(props: any) {
     const accountCurrency = props.currency;
 
 
-
     return (
         <div className={styles["account"]}>
             <Typography className={styles["number"]}>{accountNumber}</Typography>

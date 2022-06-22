@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Transaction.module.css';
 
-function Transaction(props:any) {
+function Transaction(props: any) {
     const transactionDate = props.date;
     const transactionAccount = props.account;
     const transactionAmount = props.amount;

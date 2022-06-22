@@ -5,7 +5,7 @@ import {fetchAccounts, fetchAccount, api, updateAccount} from "../api";
 
 export const getAccounts = createAsyncThunk(
     "getAccounts",
-    async(userId: number) => {
+    async (userId: number) => {
         const response = await api.get(`accounts?userId=${userId}`);
         return response.data;
     }
@@ -13,7 +13,7 @@ export const getAccounts = createAsyncThunk(
 
 export const getAccount = createAsyncThunk(
     "getAccount",
-    async(userId: number) => {
+    async (userId: number) => {
         const response = await fetchAccount(userId)
 
         return response.data;
@@ -22,7 +22,7 @@ export const getAccount = createAsyncThunk(
 
 export const updateAccountName = createAsyncThunk(
     "updateAccountName",
-    async(data:any) => {
+    async (data: any) => {
         const accountNumber = data.accountNumber;
         const newAccountName = data.newAccountName;
         console.log("I THUNK");
@@ -37,7 +37,7 @@ export const updateAccountName = createAsyncThunk(
 // state.accounts (iom name:'accounts') och sen accounts array
 const accountsSlice = createSlice({
     name: 'accounts',
-    initialState:{
+    initialState: {
         isLoading: false,
         accounts: [],
         latestAccountCard: [],
@@ -56,7 +56,7 @@ const accountsSlice = createSlice({
 
         builder.addCase(getAccount.fulfilled, (state, action) => {
             state.latestAccountCard = action.payload;
-          // state.isLoading = false;
+            // state.isLoading = false;
         });
 
         builder.addCase(updateAccountName.fulfilled, (state, action) => {

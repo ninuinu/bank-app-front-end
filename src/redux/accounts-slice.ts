@@ -20,6 +20,6 @@ export const stateSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { updateAccounts } = stateSlice.actions
+export const {updateAccounts} = stateSlice.actions
 
 export default stateSlice.reducer

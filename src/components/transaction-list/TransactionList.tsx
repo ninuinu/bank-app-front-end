@@ -23,8 +23,6 @@ interface Transaction {
 }
 
 
-
-
 // detta blir nya accountList
 export default function TransactionList() {
     const {accountNumber} = useParams();
@@ -39,7 +37,6 @@ export default function TransactionList() {
     }, [dispatch])
 
 
-
     // fetch accounts state
     //  const accounts2 = useAppSelector(state => state.accounts.accounts);
     //console.log(accounts2.filter(account => account.accountNumber === 7777));
@@ -50,15 +47,16 @@ export default function TransactionList() {
         <Paper className={styles["transactions-container"]} sx={{width: '100%'}}>
             <Stack spacing={2}>
 
-                { transactions.length > 0 ? transactions.map((transaction: Transaction) =>
-                    <ButtonBase key={transaction.id} onClick={()=>navigate(`/transaction/${transaction.id}`)}>
-                    <Paper className={styles["transaction-card"]} elevation={0}><Transaction
-                                                                                   date={transaction.date}
-                                                                                   account={transaction.account}
-                                                                                   amount={transaction.amount}
-                                                                                   counterparty={transaction.counterparty}
-                                                                                   id={transaction.id}/>
-                </Paper></ButtonBase>) : <Typography className={styles["no-transactions"]} align="center">No Transactions</Typography>
+                {transactions.length > 0 ? transactions.map((transaction: Transaction) =>
+                        <ButtonBase key={transaction.id} onClick={() => navigate(`/transaction/${transaction.id}`)}>
+                            <Paper className={styles["transaction-card"]} elevation={0}><Transaction
+                                date={transaction.date}
+                                account={transaction.account}
+                                amount={transaction.amount}
+                                counterparty={transaction.counterparty}
+                                id={transaction.id}/>
+                            </Paper></ButtonBase>) :
+                    <Typography className={styles["no-transactions"]} align="center">No Transactions</Typography>
                 }
 
             </Stack>

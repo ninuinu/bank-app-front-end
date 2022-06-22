@@ -2,7 +2,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import authSlice from "./auth-slice";
 import accountsSlice from "./accounts-slice";
 import transactionsSlice from "./transactions-slice";
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
 
 const store: any = configureStore({
     reducer: {

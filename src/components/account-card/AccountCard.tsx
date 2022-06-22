@@ -17,7 +17,7 @@ import styles from './AccountCard.module.css';
 const bull = (
     <Box
         component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+        sx={{display: 'inline-block', mx: '2px', transform: 'scale(0.8)'}}
     >
         •
     </Box>
@@ -26,7 +26,7 @@ const bull = (
 export default function AccountCard() {
     const {accountNumber} = useParams();
     const account = useAppSelector(state => state.accounts.latestAccountCard)[0];
- //   const accounts = useAppSelector(state => state.accounts.accounts);
+    //   const accounts = useAppSelector(state => state.accounts.accounts);
 
 //    const [newName, setNewName] = useState("");
 
@@ -47,13 +47,12 @@ export default function AccountCard() {
     const dispatch = useAppDispatch();
 
 
-
     useEffect(() => {
         dispatch(getAccount(Number(accountNumber)));
     }, [])
 
     // onclick submit function
-    const saveName =(e:any)=>{
+    const saveName = (e: any) => {
         setEditableName(false);
         const data = {accountNumber: accountNumber, newAccountName: inputValue};
         dispatch(updateAccountName(data));
@@ -64,22 +63,22 @@ export default function AccountCard() {
 
 
     // store input from user
-    const handleChange = (e:any) =>{
+    const handleChange = (e: any) => {
         setInputValue(e.target.value);
         console.log(inputValue);
     };
 
-/*
-    useEffect(()=>{
+    /*
+        useEffect(()=>{
 
-        const data = {accountNumber: accountNumber, newAccountName: newName};
+            const data = {accountNumber: accountNumber, newAccountName: newName};
 
-        dispatch(updateAccountName(data));
-        setEditableName(false);
-        setNewNameHasBeenSet(true);
-        console.log(account);
-    },[newName]);
-*/
+            dispatch(updateAccountName(data));
+            setEditableName(false);
+            setNewNameHasBeenSet(true);
+            console.log(account);
+        },[newName]);
+    */
     useEffect(() => {
         dispatch(getAccounts(Number(accountNumber)));
         dispatch(getAccount(Number(accountNumber)));
@@ -94,34 +93,33 @@ export default function AccountCard() {
     }*/
 
 
-
-
-
     return (
         <>
 
             {account ?
 
-        <Card className={styles["card"]} sx={{ minWidth: 275 }}>
-            <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {account.accountNumber}
-                </Typography>
-                    {editableName?<><TextField defaultValue={account.accountName} autoFocus={true} onChange={handleChange}/> <Button onClick={saveName} size="small">Save</Button></>:
-                        <Typography variant="h5" component="div">{account.accountName}</Typography>}
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {account.currency}
-                </Typography>
-                <Typography variant="body2">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button onClick={()=>setEditableName(!editableName)} size="small">Edit Name</Button>
-            </CardActions>
-        </Card>
+                <Card className={styles["card"]} sx={{minWidth: 275}}>
+                    <CardContent>
+                        <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
+                            {account.accountNumber}
+                        </Typography>
+                        {editableName ? <><TextField defaultValue={account.accountName} autoFocus={true}
+                                                     onChange={handleChange}/> <Button onClick={saveName}
+                                                                                       size="small">Save</Button></> :
+                            <Typography variant="h5" component="div">{account.accountName}</Typography>}
+                        <Typography sx={{mb: 1.5}} color="text.secondary">
+                            {account.currency}
+                        </Typography>
+                        <Typography variant="body2">
+                            well meaning and kindly.
+                            <br/>
+                            {'"a benevolent smile"'}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button onClick={() => setEditableName(!editableName)} size="small">Edit Name</Button>
+                    </CardActions>
+                </Card>
                 : <CircularProgress/>
             }
 
