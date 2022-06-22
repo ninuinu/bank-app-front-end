@@ -60,7 +60,8 @@ Which enables users to:
 
 ## Future Improvements
 
-* Validation of requests in back-end, e.g. by using Joi
-* Implement a real database
-* Implement authentication
+* Implement additional features (delete account, update contact info, etc.)
+* Implement tests
+* Implement authentication 
+* Improve design
 
