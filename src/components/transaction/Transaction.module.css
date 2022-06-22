@@ -1,6 +1,31 @@
-.transaction-row {
+.transaction {
     display: flex;
-    justify-content: space-around;
-    align-content: space-between;
+    flex-direction: row;
+    margin-block: 18px;
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+
 }
 
+.date {
+    text-align: left;
+}
+
+.account {
+    text-align: left;
+    font-weight: bold;
+}
+
+.amount {
+    text-align: right;
+}
+
+.counterparty {
+
+}
+
+.id {
+
+}

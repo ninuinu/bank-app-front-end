@@ -11,19 +11,6 @@ function App() {
 
     const dispatch = useAppDispatch();
 
-    // get state variable isLoggedIn (used as condition in components down below)
-    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
-    const isLoading = useAppSelector(state => state.accounts.isLoading);
-    const accounts = useAppSelector(state => state.accounts.accounts);
-    const transactions = useAppSelector(state => state.transactions.transactions);
-
-
-    // connected to button
-    const toggleLoggedInState = (e: any) => {
-        e.preventDefault();
-        dispatch(authActions.toggleView());
-        dispatch(authActions.logout());
-    }
 
     return (
         <>
@@ -53,10 +40,6 @@ function App() {
                                </>
                            }/>
                 </Routes>
-
-                <Button onClick={toggleLoggedInState}>TOGGLE</Button>
-                <Button onClick={() => dispatch(getAccounts(2451))}>Get accounts</Button>
-
             </Container>
         </>
     );

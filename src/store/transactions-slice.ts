@@ -1,18 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {fetchTransactions, fetchTransaction} from "../api";
+import {api} from "../api";
 
 export const getTransactions = createAsyncThunk(
     "getTransactions",
     async (accountNumber: number) => {
-        const response = await fetchTransactions(accountNumber);
-        return response.data;
-    }
-)
-
-export const getTransaction = createAsyncThunk(
-    "getTransaction",
-    async (transactionId: number) => {
-        const response = await fetchTransaction(transactionId);
+        const response = await api.get(`transactions?accountNumber=${accountNumber}`);
         return response.data;
     }
 )
@@ -22,20 +14,20 @@ const transactionsSlice = createSlice({
         name: 'transactions',
         initialState: {
             transactions: [],
-            latestTransactionCard: []
+            isLoading: false,
         },
         extraReducers: (builder) => {
             builder.addCase(getTransactions.fulfilled, (state, action) => {
                 state.transactions = action.payload;
+                state.isLoading = false;
             });
-
-            builder.addCase(getTransaction.fulfilled, (state, action) => {
-                state.latestTransactionCard = action.payload;
-                // state.isLoading = false;
+            builder.addCase(getTransactions.pending, (state, action) => {
+                state.isLoading = true;
             });
         }
     }
 );
 
-export const transactionsActions = transactionsSlice.actions;
+export const selectAllTransactions = (state: any) => state.transactions.transactions;
+export const isLoading = (state: any) => state.isLoading;
 export default transactionsSlice;
