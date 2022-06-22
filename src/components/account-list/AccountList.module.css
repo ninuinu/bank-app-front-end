@@ -1,8 +1,12 @@
 .MuiButtonBase-root {
     display: block;
     width: 100%;
+
 }
 
-.account-paper-row{
+.account-paper-row {
     width: 100%;
+}
+.account-paper-row:hover {
+    background-color: #ebf1fb;
 }
