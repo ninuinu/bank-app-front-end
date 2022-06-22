@@ -31,22 +31,17 @@ export default function TransactionCard() {
     const transaction = useAppSelector(state => state.transactions.latestTransactionCard)[0];
     const account = useAppSelector(state => state.accounts.latestAccountCard)[0];
 
-    console.log("I TRANSACTION CARD");
-    console.log(transaction);
-    console.log(account);
-
-    const localTransactionCopy = transaction;
 
     useEffect(() => {
         dispatch(getTransaction(Number(id)));
 
+
     }, [dispatch])
 
     useEffect(() => {
-        dispatch(getAccount(Number(localTransactionCopy.account)));
+        if(transaction) dispatch(getAccount(Number(transaction.account)));
 
-    }, [localTransactionCopy])
-
+    }, [transaction])
 
 
     return (

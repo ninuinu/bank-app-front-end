@@ -8,7 +8,7 @@ import {Account} from "../index";
 import {Button, ButtonBase} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../store";
 import {useEffect} from "react";
-import {getAccounts} from "../../store/accounts-slice";
+import {getAccount, getAccounts} from "../../store/accounts-slice";
 import {useNavigate} from "react-router-dom";
 import styles from "./AccountList.module.css";
 import {ThemeProvider} from "@mui/material/styles";
@@ -43,7 +43,6 @@ export default function AccountList() {
     // const userId = useAppSelector(state => state.accounts.userId);
 
 
-
     useEffect(() => {
         dispatch(getAccounts(2451));
     }, [dispatch])
@@ -56,11 +55,12 @@ export default function AccountList() {
     return (
         <Box sx={{width: '100%', boxShadow:1, borderRadius:'5px'}}>
             <Stack spacing={2}>
-                {accounts.map((account: Account) => <ButtonBase className={styles["MuiButtonBase-root"]}
+                {accounts.map((account: Account) => <ButtonBase key={account.accountNumber}
+                                                                className={styles["MuiButtonBase-root"]}
                                                                 onClick={() => {
                                                                     navigate(`/transactions/${account.accountNumber}`)
                                                                 }}><Item
-                    className={styles["account-paper-row"]}><Account key={account.accountNumber}
+                    className={styles["account-paper-row"]}><Account
                                                                      number={account.accountNumber}
                                                                      name={account.accountName}
                                                                      balance={account.balance}

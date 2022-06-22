@@ -51,8 +51,8 @@ export default function TransactionList() {
             <Stack spacing={2}>
 
                 { transactions.length > 0 ? transactions.map((transaction: Transaction) =>
-                    <ButtonBase onClick={()=>navigate(`/transaction/${transaction.id}`)}>
-                    <Paper className={styles["transaction-card"]} elevation={0}><Transaction key={transaction.id}
+                    <ButtonBase key={transaction.id} onClick={()=>navigate(`/transaction/${transaction.id}`)}>
+                    <Paper className={styles["transaction-card"]} elevation={0}><Transaction
                                                                                    date={transaction.date}
                                                                                    account={transaction.account}
                                                                                    amount={transaction.amount}

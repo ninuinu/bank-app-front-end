@@ -13,6 +13,10 @@ export async function fetchAccount(accountNumber: number){
     return api.get(`account?accountNumber=${accountNumber}`);
 };
 
+export async function updateAccount(accountNumber:number, name:string){
+    return api.post(`accountName?accountNumber=${accountNumber}?accountName=${name}`);
+};
+
 export async function fetchTransactions(accountNumber:number){
     return api.get(`transactions?accountNumber=${accountNumber}`);
 };
