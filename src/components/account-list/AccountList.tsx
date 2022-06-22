@@ -11,8 +11,6 @@ import {useEffect} from "react";
 import {getAccount, getAccounts} from "../../store/accounts-slice";
 import {useNavigate} from "react-router-dom";
 import styles from "./AccountList.module.css";
-import {ThemeProvider} from "@mui/material/styles";
-import shadows from "@mui/material/styles/shadows";
 import './AccountList.css';
 
 
@@ -33,24 +31,17 @@ const Item = styled(Paper)(({theme}) => ({
     color: theme.palette.text.secondary,
 }));
 
-// detta blir nya accountList
 export default function AccountList() {
     const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
 
     const accounts = useAppSelector(state => state.accounts.accounts);
-    // const userId = useAppSelector(state => state.accounts.userId);
 
 
     useEffect(() => {
         dispatch(getAccounts(2451));
     }, [dispatch])
-
-
-    // fetch accounts state
-    //  const accounts2 = useAppSelector(state => state.accounts.accounts);
-    //console.log(accounts2.filter(account => account.accountNumber === 7777));
 
     return (
         <Box sx={{width: '100%', boxShadow: 1, borderRadius: '5px'}}>

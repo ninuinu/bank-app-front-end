@@ -28,6 +28,7 @@ const transactionsSlice = createSlice({
             builder.addCase(getTransactions.fulfilled, (state, action) => {
                 state.transactions = action.payload;
             });
+
             builder.addCase(getTransaction.fulfilled, (state, action) => {
                 state.latestTransactionCard = action.payload;
                 // state.isLoading = false;

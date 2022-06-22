@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {fetchAccounts, fetchAccount, api, updateAccount} from "../api";
-//import {fetchAccounts, fetchAccount, api} from "../api";
+import {fetchAccount, api, updateAccount} from "../api";
 
 
 export const getAccounts = createAsyncThunk(
@@ -25,8 +24,6 @@ export const updateAccountName = createAsyncThunk(
     async (data: any) => {
         const accountNumber = data.accountNumber;
         const newAccountName = data.newAccountName;
-        console.log("I THUNK");
-        console.log(newAccountName);
         const response = await updateAccount(accountNumber, newAccountName);
         return response.data;
     }
@@ -56,38 +53,14 @@ const accountsSlice = createSlice({
 
         builder.addCase(getAccount.fulfilled, (state, action) => {
             state.latestAccountCard = action.payload;
-            // state.isLoading = false;
+            state.isLoading = false;
         });
 
         builder.addCase(updateAccountName.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.accounts = action.payload;
-            // state.isLoading = false;
+            state.isLoading = false;
         });
 
-
-        /*
-        builder.addCase(updateAccountName.fulfilled, (state, action) => {
-
-
-            let myClonedArray = state.accounts.slice();
-
-            myClonedArray.map((account) => {
-                // @ts-ignore
-                console.log("I MAPPEN:");
-                // @ts-ignore
-                console.log(account.accountNumber);
-                // @ts-ignore
-                if(account.accountNumber === action.payload.accountNumber) {
-                    console.log("MAAAAAAAAAATCH");
-                    // @ts-ignore
-                    account.accountName = action.payload.accountName;
-                }});
-            state.accounts = myClonedArray;
-
-            console.log("LOCAL ACCOUNTS COPY");
-            console.log(myClonedArray);
-        }); */
 
         builder.addCase(getAccounts.pending, (state, action) => {
             state.isLoading = true

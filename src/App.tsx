@@ -2,27 +2,10 @@ import React from 'react';
 import {ResponsiveAppBar, AccountList, TransactionList, AccountCard, TransactionCard} from './components/index';
 import {Button, CssBaseline, Container} from "@mui/material";
 import {authActions} from "./store/auth-slice";
-import {accountsActions, getAccounts} from "./store/accounts-slice";
+import {getAccounts} from "./store/accounts-slice";
 import styles from './App.module.css';
 import {useAppDispatch, useAppSelector} from "./store";
 import {Route, Routes} from "react-router-dom";
-
-/**
- const test = async () =>  {
-    const dispatch = useDispatch();
-    const state = useSelector(state => state.accounts.value)
-    const accounts = await getAccounts(2451);
-    dispatch(update(accounts));
-} **/
-
-/**
- const test = async () =>{
-    const accounts = await getAccounts(2451);
-    console.log(accounts);
-}
- test();**/
-
-
 
 function App() {
 
@@ -76,13 +59,7 @@ function App() {
 
             </Container>
         </>
-
     );
 }
 
 export default App;
-
-
-// fixa routes
-// rendera accountslists
-// den hämtar sen accounts iom redux

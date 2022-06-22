@@ -21,10 +21,4 @@ const authSlice = createSlice({
 });
 
 export const authActions = authSlice.actions;
-
 export default authSlice;
-
-
-// is home page
-// is accounts view (userId as payload)
-// is single acounts view (account number as payload)

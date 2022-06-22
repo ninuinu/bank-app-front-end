@@ -1,14 +1,9 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import {styled} from '@mui/material/styles';
-//import {useNavigate} from "react-router-dom";
-import {Account} from "../index";
 import {ButtonBase, Typography} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../store";
 import {useEffect} from "react";
-import {getAccounts} from "../../store/accounts-slice";
 import {getTransactions} from "../../store/transactions-slice";
 import {Transaction} from "../index";
 import {useNavigate, useParams} from 'react-router-dom';
@@ -22,8 +17,6 @@ interface Transaction {
     id: number,
 }
 
-
-// detta blir nya accountList
 export default function TransactionList() {
     const {accountNumber} = useParams();
     const navigate = useNavigate();
@@ -35,11 +28,6 @@ export default function TransactionList() {
     useEffect(() => {
         dispatch(getTransactions(parseInt(accountNumber as string)));
     }, [dispatch])
-
-
-    // fetch accounts state
-    //  const accounts2 = useAppSelector(state => state.accounts.accounts);
-    //console.log(accounts2.filter(account => account.accountNumber === 7777));
 
 
     return (

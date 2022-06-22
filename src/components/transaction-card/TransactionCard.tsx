@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store";
@@ -25,7 +23,6 @@ const bull = (
 export default function TransactionCard() {
     const {id} = useParams();
 
-    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const transaction = useAppSelector(state => state.transactions.latestTransactionCard)[0];

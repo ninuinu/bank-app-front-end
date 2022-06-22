@@ -1,14 +1,10 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import {useNavigate, useParams} from "react-router-dom";
+import {Button, Typography, Box, Card} from '@mui/material';
+import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store";
-import {useCallback, useEffect, useState} from "react";
-//import {getAccount, updateAccountName} from "../../store/accounts-slice";
+import {useEffect, useState} from "react";
 import {getAccount, getAccounts, updateAccountName} from "../../store/accounts-slice";
 
 import {CircularProgress, TextField} from '@mui/material';
@@ -26,9 +22,6 @@ const bull = (
 export default function AccountCard() {
     const {accountNumber} = useParams();
     const account = useAppSelector(state => state.accounts.latestAccountCard)[0];
-    //   const accounts = useAppSelector(state => state.accounts.accounts);
-
-//    const [newName, setNewName] = useState("");
 
     // show/hide text field + submit button
     const [editableName, setEditableName] = useState(false);
@@ -42,8 +35,6 @@ export default function AccountCard() {
     // store new name
     const [newName, setNewName] = useState("");
 
-
-//    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
 
@@ -51,7 +42,7 @@ export default function AccountCard() {
         dispatch(getAccount(Number(accountNumber)));
     }, [])
 
-    // onclick submit function
+    // called when a user updates the name of an account
     const saveName = (e: any) => {
         setEditableName(false);
         const data = {accountNumber: accountNumber, newAccountName: inputValue};
@@ -59,38 +50,19 @@ export default function AccountCard() {
         setEditableName(false);
         setNewNameHasBeenSet(true);
 
-    }; // on change, save to saveName
-
-
-    // store input from user
-    const handleChange = (e: any) => {
-        setInputValue(e.target.value);
-        console.log(inputValue);
     };
 
-    /*
-        useEffect(()=>{
+    // stores the new account name inputed from the user
+    const handleChange = (e: any) => {
+        setInputValue(e.target.value);
+    };
 
-            const data = {accountNumber: accountNumber, newAccountName: newName};
-
-            dispatch(updateAccountName(data));
-            setEditableName(false);
-            setNewNameHasBeenSet(true);
-            console.log(account);
-        },[newName]);
-    */
+    // update accounts information in global store object
     useEffect(() => {
         dispatch(getAccounts(Number(accountNumber)));
         dispatch(getAccount(Number(accountNumber)));
         setNewNameHasBeenSet(false);
     }, [newNameHasBeenSet])
-
-    /*
-    const handleClick = () =>{
-        console.log(newName);
-        // @ts-ignore
-        dispatch(updateAccountName(Number(account.accountNumber),newName));
-    }*/
 
 
     return (
