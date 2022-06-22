@@ -1,3 +1,22 @@
 .card{
     margin-bottom: 18px;
+
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.amount{
+    text-align: right;
+    width: 18%;
+    font-weight: bold;
+}
+
+.currency{
+    font-weight: 100;
+    text-align: right;
+    width: 100%;
 }

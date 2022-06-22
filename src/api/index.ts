@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: "http://localhost:6060/",
 });
 
@@ -15,4 +15,8 @@ export async function fetchAccount(accountNumber: number){
 
 export async function fetchTransactions(accountNumber:number){
     return api.get(`transactions?accountNumber=${accountNumber}`);
+};
+
+export async function fetchTransaction(id:number){
+    return api.get(`transaction?id=${id}`);
 };

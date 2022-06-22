@@ -8,8 +8,6 @@ function Transaction(props:any) {
     const transactionCounterparty = props.counterparty;
     const transactionId = props.id;
 
-    console.log(transactionCounterparty);
-
     return (
         <div className={styles["transaction-row"]}>
             <div className={"transaction-date"}>{transactionDate}</div>

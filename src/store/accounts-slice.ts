@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {fetchAccounts, fetchAccount} from "../api";
+import {fetchAccounts, fetchAccount, api} from "../api";
 
 export const getAccounts = createAsyncThunk(
     "getAccounts",
     async(userId: number) => {
-        const response = await fetchAccounts(userId);
+        const response = await api.get(`accounts?userId=${userId}`);
         return response.data;
     }
 )
@@ -12,7 +12,9 @@ export const getAccounts = createAsyncThunk(
 export const getAccount = createAsyncThunk(
     "getAccount",
     async(userId: number) => {
-        const response = await fetchAccount(userId);
+        const response = await fetchAccount(userId)
+        console.log("I GET ACCOUNT SLICE")
+        console.log(response.data)
         return response.data;
     }
 )

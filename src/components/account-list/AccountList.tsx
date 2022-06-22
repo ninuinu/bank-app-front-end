@@ -13,6 +13,7 @@ import {useNavigate} from "react-router-dom";
 import styles from "./AccountList.module.css";
 import {ThemeProvider} from "@mui/material/styles";
 import shadows from "@mui/material/styles/shadows";
+import './AccountList.css';
 
 
 interface Account {
@@ -42,6 +43,7 @@ export default function AccountList() {
     // const userId = useAppSelector(state => state.accounts.userId);
 
 
+
     useEffect(() => {
         dispatch(getAccounts(2451));
     }, [dispatch])
@@ -50,9 +52,6 @@ export default function AccountList() {
     // fetch accounts state
     //  const accounts2 = useAppSelector(state => state.accounts.accounts);
     //console.log(accounts2.filter(account => account.accountNumber === 7777));
-
-    console.log("i AccountlistMUI");
-    console.log(accounts);
 
     return (
         <Box sx={{width: '100%', boxShadow:1, borderRadius:'5px'}}>

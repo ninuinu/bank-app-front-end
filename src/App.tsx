@@ -1,5 +1,5 @@
 import React from 'react';
-import {ResponsiveAppBar, AccountList, TransactionList, AccountCard} from './components/index';
+import {ResponsiveAppBar, AccountList, TransactionList, AccountCard, TransactionCard} from './components/index';
 import {Button, CssBaseline, Container} from "@mui/material";
 import {authActions} from "./store/auth-slice";
 import {accountsActions, getAccounts} from "./store/accounts-slice";
@@ -34,8 +34,6 @@ function App() {
     const accounts = useAppSelector(state => state.accounts.accounts);
     const transactions = useAppSelector(state => state.transactions.transactions);
 
-    console.log("trans");
-    console.log(transactions);
 
     // connected to button
     const toggleLoggedInState = (e: any) => {
@@ -60,10 +58,17 @@ function App() {
 
                     <Route path={"/transactions/:accountNumber"}
                            element={
-                        <>
-                        <AccountCard/>
-                        <TransactionList/>
-                        </>}/>
+                               <>
+                                   <AccountCard/>
+                                   <TransactionList/>
+
+                               </>}/>
+                    <Route path={"/transaction/:id"}
+                           element={
+                            <>
+                               <TransactionCard/>
+                            </>
+                           }/>
                 </Routes>
 
                 <Button onClick={toggleLoggedInState}>TOGGLE</Button>
@@ -76,9 +81,6 @@ function App() {
 }
 
 export default App;
-
-
-
 
 
 // fixa routes

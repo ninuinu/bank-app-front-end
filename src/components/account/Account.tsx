@@ -9,8 +9,7 @@ function Account(props: any) {
     const accountUserId = props.userId;
     const accountCurrency = props.currency;
 
-    console.log("i Account");
-    console.log(accountNumber);
+
 
     return (
         <div className={styles["account"]}>

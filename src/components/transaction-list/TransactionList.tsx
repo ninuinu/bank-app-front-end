@@ -11,7 +11,7 @@ import {useEffect} from "react";
 import {getAccounts} from "../../store/accounts-slice";
 import {getTransactions} from "../../store/transactions-slice";
 import {Transaction} from "../index";
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import styles from './TransactionList.module.css';
 
 interface Transaction {
@@ -28,6 +28,7 @@ interface Transaction {
 // detta blir nya accountList
 export default function TransactionList() {
     const {accountNumber} = useParams();
+    const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
 
@@ -43,20 +44,21 @@ export default function TransactionList() {
     //  const accounts2 = useAppSelector(state => state.accounts.accounts);
     //console.log(accounts2.filter(account => account.accountNumber === 7777));
 
-    console.log(" TRANSACTION LIST ");
-    console.log(transactions);
+
     return (
 
         <Paper className={styles["transactions-container"]} sx={{width: '100%'}}>
             <Stack spacing={2}>
 
-                { transactions.length > 0 ? transactions.map((transaction: Transaction) => <Paper className={styles["transaction-card"]} elevation={0}><Transaction key={transaction.id}
+                { transactions.length > 0 ? transactions.map((transaction: Transaction) =>
+                    <ButtonBase onClick={()=>navigate(`/transaction/${transaction.id}`)}>
+                    <Paper className={styles["transaction-card"]} elevation={0}><Transaction key={transaction.id}
                                                                                    date={transaction.date}
                                                                                    account={transaction.account}
                                                                                    amount={transaction.amount}
                                                                                    counterparty={transaction.counterparty}
                                                                                    id={transaction.id}/>
-                </Paper>) : <Typography className={styles["no-transactions"]} align="center">No Transactions</Typography>
+                </Paper></ButtonBase>) : <Typography className={styles["no-transactions"]} align="center">No Transactions</Typography>
                 }
 
             </Stack>
