@@ -9,12 +9,14 @@
 
 .number {
     width: 20%;
+    text-align: left;
+    margin-left: 30px;
 }
 
 .name {
     width: 20%;
    text-align: left;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .balance {

@@ -55,7 +55,7 @@ export default function AccountList() {
     console.log(accounts);
 
     return (
-        <Box sx={{width: '100%'}}>
+        <Box sx={{width: '100%', boxShadow:1, borderRadius:'5px'}}>
             <Stack spacing={2}>
                 {accounts.map((account: Account) => <ButtonBase className={styles["MuiButtonBase-root"]}
                                                                 onClick={() => {
