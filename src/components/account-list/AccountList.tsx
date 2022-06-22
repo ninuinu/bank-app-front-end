@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import {styled} from '@mui/material/styles';
+import {createTheme, styled} from '@mui/material/styles';
 //import {useNavigate} from "react-router-dom";
 import {Account} from "../index";
 import {Button, ButtonBase} from "@mui/material";
@@ -11,6 +11,9 @@ import {useEffect} from "react";
 import {getAccounts} from "../../store/accounts-slice";
 import {useNavigate} from "react-router-dom";
 import styles from "./AccountList.module.css";
+import {ThemeProvider} from "@mui/material/styles";
+import shadows from "@mui/material/styles/shadows";
+
 
 interface Account {
     accountNumber: number;
@@ -19,7 +22,6 @@ interface Account {
     userId: number;
     currency: string;
 }
-
 
 
 const Item = styled(Paper)(({theme}) => ({
@@ -55,12 +57,17 @@ export default function AccountList() {
     return (
         <Box sx={{width: '100%'}}>
             <Stack spacing={2}>
-                {accounts.map((account: Account) => <ButtonBase className={styles["MuiButtonBase-root"]} onClick={()=>{navigate(`/transactions/${account.accountNumber}`)}}><Item className={styles["account-paper-row"]}><Account key={account.accountNumber}
-                                                                    number={account.accountNumber}
-                                                                    name={account.accountName}
-                                                                    balance={account.balance}
-                                                                    userId={account.userId}
-                                                                           currency={account.currency}/> </Item></ButtonBase>)}
+                {accounts.map((account: Account) => <ButtonBase className={styles["MuiButtonBase-root"]}
+                                                                onClick={() => {
+                                                                    navigate(`/transactions/${account.accountNumber}`)
+                                                                }}><Item
+                    className={styles["account-paper-row"]}><Account key={account.accountNumber}
+                                                                     number={account.accountNumber}
+                                                                     name={account.accountName}
+                                                                     balance={account.balance}
+                                                                     userId={account.userId}
+                                                                     currency={account.currency}/>
+                </Item></ButtonBase>)}
 
             </Stack>
         </Box>
