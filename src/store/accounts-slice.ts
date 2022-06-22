@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-//import {fetchAccounts, fetchAccount, api, updateAccount} from "../api";
-import {fetchAccounts, fetchAccount, api} from "../api";
+import {fetchAccounts, fetchAccount, api, updateAccount} from "../api";
+//import {fetchAccounts, fetchAccount, api} from "../api";
 
 
 export const getAccounts = createAsyncThunk(
@@ -19,17 +19,18 @@ export const getAccount = createAsyncThunk(
         return response.data;
     }
 )
-/*
+
 export const updateAccountName = createAsyncThunk(
     "updateAccountName",
-    // @ts-ignore
-    async(accountNumber:number, newAccountName: string) => {
+    async(data:any) => {
+        const accountNumber = data.accountNumber;
+        const newAccountName = data.newAccountName;
+        console.log("I THUNK");
+        console.log(newAccountName);
         const response = await updateAccount(accountNumber, newAccountName);
-        console.log("I GET ACCOUNT SLICE");
-        console.log(response.data);
         return response.data;
     }
-)*/
+)
 
 
 // @ts-ignore
@@ -58,7 +59,14 @@ const accountsSlice = createSlice({
           // state.isLoading = false;
         });
 
-/*
+        builder.addCase(updateAccountName.fulfilled, (state, action) => {
+            console.log(action.payload);
+            state.accounts = action.payload;
+            // state.isLoading = false;
+        });
+
+
+        /*
         builder.addCase(updateAccountName.fulfilled, (state, action) => {
 
 

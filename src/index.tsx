@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <React.StrictMode>
+    /**<React.StrictMode>**/
         <Provider store={store}>
             <BrowserRouter>
                 <StyledEngineProvider injectFirst>
@@ -22,6 +22,6 @@ root.render(
 
             </BrowserRouter>
         </Provider>
-    </React.StrictMode>
+  /**  </React.StrictMode>**/
 );
 

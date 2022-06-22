@@ -14,7 +14,10 @@ export async function fetchAccount(accountNumber: number){
 };
 
 export async function updateAccount(accountNumber:number, name:string){
-    return api.post(`accountName?accountNumber=${accountNumber}?accountName=${name}`);
+    console.log("I APIET");
+    console.log(accountNumber);
+    console.log(name);
+    return api.post(`accountName?accountNumber=${accountNumber}&accountName=${name}`);
 };
 
 export async function fetchTransactions(accountNumber:number){
