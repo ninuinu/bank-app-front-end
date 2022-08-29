@@ -1,6 +1,6 @@
 # Bank App: Front-End
 
-This the repository containing all code necessary to run the front-end of the bank app webb application. 
+Repository containing all code necessary to run the front-end of the bank app webb application. 
 ## Getting Started
 
 Download the project and navigate to the project directory. From there, run:
